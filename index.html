@@ -1,0 +1,477 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173d32">
+  <meta name="description" content="Welcome to Bible Camp! Explore Bible stories, play quizzes, complete daily challenges and grow in faith.">
+
+  <title>Bible Camp | Grow, Learn, Explore</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- DECORATIVE BACKGROUND -->
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+
+    <a class="brand" href="#" data-page="home" aria-label="Bible Camp home">
+      <span class="brand-icon">✦</span>
+      <span>
+        Bible <b>Camp</b>
+        <small>GROW • LEARN • EXPLORE</small>
+      </span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      id="menu-toggle"
+      aria-label="Open navigation"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
+
+    <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+      <button class="nav-link active" data-page="home">Home</button>
+      <button class="nav-link" data-page="stories">Stories</button>
+      <button class="nav-link" data-page="quiz">Bible Quiz</button>
+      <button class="nav-link" data-page="challenge">Daily Challenge</button>
+      <button class="nav-link" data-page="achievements">Achievements</button>
+      <button class="nav-link" data-page="songs">Songs</button>
+    </nav>
+
+    <button
+      class="sound-toggle"
+      id="sound-toggle"
+      aria-pressed="false"
+      title="Toggle sound"
+    >
+      ♫ <span>Sound off</span>
+    </button>
+
+  </header>
+
+
+  <main>
+
+    <!-- HOME PAGE -->
+    <section class="page active" id="page-home">
+
+      <div class="hero">
+
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="sparkle">✧</span>
+            YOUR ADVENTURE STARTS HERE
+          </p>
+
+          <h1>
+            Welcome to<br>
+            <em>Bible Camp!</em>
+          </h1>
+
+          <p class="hero-lede">
+            A place to discover amazing stories, explore big
+            questions and grow in faith — one adventure at a time.
+          </p>
+
+          <div class="hero-actions">
+            <button class="button button-gold" data-page="stories">
+              Explore the stories <span>→</span>
+            </button>
+
+            <button class="button button-outline" data-page="quiz">
+              Try a quiz
+            </button>
+          </div>
+
+          <div class="hero-note">
+            <span class="tiny-star">✦</span>
+            50 stories • Fun quizzes • Little discoveries
+          </div>
+        </div>
+
+
+        <!-- ENCHANTED CAMPSITE ILLUSTRATION -->
+        <div class="hero-art" aria-label="Illustrated forest campsite">
+
+          <div class="moon"></div>
+
+          <div class="hero-star star-a">✦</div>
+          <div class="hero-star star-b">✧</div>
+
+          <div class="hill hill-back"></div>
+          <div class="hill hill-front"></div>
+
+          <div class="pine pine-one">♠</div>
+          <div class="pine pine-two">♠</div>
+          <div class="pine pine-three">♠</div>
+
+          <div class="tent">
+            <div class="tent-door"></div>
+          </div>
+
+          <div class="campfire">
+            <span>✦</span>
+            <i></i>
+            <b></b>
+          </div>
+
+          <div class="lantern">♧</div>
+
+          <div class="art-caption">
+            A little light for every journey
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- WELCOME STRIP -->
+      <section class="welcome-strip">
+
+        <div>
+          <span class="strip-icon">🌿</span>
+          <div>
+            <b>Every story has a lesson</b>
+            <small>Discover courage, kindness, hope and faith.</small>
+          </div>
+        </div>
+
+        <div>
+          <span class="strip-icon">⭐</span>
+          <div>
+            <b>Learn at your own pace</b>
+            <small>Read, explore and collect achievements.</small>
+          </div>
+        </div>
+
+        <div>
+          <span class="strip-icon">🏕️</span>
+          <div>
+            <b>Everyone is welcome</b>
+            <small>There's something to discover at every age.</small>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- FEATURED ACTIVITIES -->
+      <section class="content-section">
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">PICK YOUR NEXT ADVENTURE</p>
+            <h2>Where shall we explore?</h2>
+          </div>
+
+          <button class="text-button" data-page="stories">
+            All 50 stories →
+          </button>
+        </div>
+
+        <div class="feature-grid">
+
+          <button class="feature-card story-feature" data-page="stories">
+            <span class="feature-emoji">📖</span>
+            <span class="feature-tag">50 ADVENTURES</span>
+            <strong>Bible Stories</strong>
+            <small>
+              Meet heroes, discover miracles and explore the Bible.
+            </small>
+            <span class="feature-arrow">Explore stories →</span>
+          </button>
+
+          <button class="feature-card quiz-feature" data-page="quiz">
+            <span class="feature-emoji">🧠</span>
+            <span class="feature-tag">TEST YOUR KNOWLEDGE</span>
+            <strong>Bible Quiz</strong>
+            <small>
+              Try a question, learn something new and earn points.
+            </small>
+            <span class="feature-arrow">Play the quiz →</span>
+          </button>
+
+          <button class="feature-card challenge-feature" data-page="challenge">
+            <span class="feature-emoji">🌞</span>
+            <span class="feature-tag">A LITTLE SOMETHING DAILY</span>
+            <strong>Daily Challenge</strong>
+            <small>
+              Pause, think and put a Bible lesson into practice.
+            </small>
+            <span class="feature-arrow">See today's challenge →</span>
+          </button>
+
+        </div>
+      </section>
+
+
+      <!-- MEMORY VERSE -->
+      <section class="verse-card">
+
+        <span class="verse-mark">“</span>
+
+        <div>
+          <p class="eyebrow">A VERSE TO CARRY WITH YOU</p>
+
+          <blockquote>
+            Be strong and courageous. Do not be afraid.
+          </blockquote>
+
+          <small>Joshua 1:9</small>
+        </div>
+
+        <span class="verse-leaf">✧</span>
+
+      </section>
+
+    </section>
+
+
+    <!-- BIBLE STORIES PAGE -->
+    <section class="page" id="page-stories">
+
+      <div class="page-heading">
+        <p class="eyebrow">TURN THE PAGE, START AN ADVENTURE</p>
+        <h1>Explore the <em>stories</em></h1>
+        <p>
+          Fifty memorable stories from the Bible, retold in
+          clear, friendly language.
+        </p>
+      </div>
+
+      <div class="story-controls">
+
+        <label class="search-box">
+          ⌕
+          <input
+            id="story-search"
+            type="search"
+            placeholder="Search stories, people or topics..."
+            aria-label="Search stories"
+          >
+        </label>
+
+        <select id="category-filter" aria-label="Filter by collection">
+          <option value="all">All collections</option>
+        </select>
+
+      </div>
+
+      <p class="results-count" id="results-count">
+        50 stories to explore
+      </p>
+
+      <div class="story-grid" id="story-grid"></div>
+
+    </section>
+
+
+    <!-- INDIVIDUAL STORY READER -->
+    <section class="page" id="page-reader">
+
+      <button class="back-link" data-page="stories">
+        ← Back to all stories
+      </button>
+
+      <article class="reader-card" id="reader-content"></article>
+
+    </section>
+
+
+    <!-- BIBLE QUIZ PAGE -->
+    <section class="page" id="page-quiz">
+
+      <div class="page-heading">
+        <p class="eyebrow">THINK • REMEMBER • DISCOVER</p>
+        <h1>The Bible <em>Quiz</em></h1>
+        <p>
+          How much do you remember? Give it a go —
+          every answer is a chance to learn.
+        </p>
+      </div>
+
+      <div class="quiz-panel" id="quiz-panel">
+
+        <div class="quiz-top">
+          <span class="quiz-label">CAMP KNOWLEDGE CHECK</span>
+          <span id="quiz-progress">Question 1 of 10</span>
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-fill" id="quiz-progress-fill"></div>
+        </div>
+
+        <div id="quiz-content"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- DAILY CHALLENGE PAGE -->
+    <section class="page" id="page-challenge">
+
+      <div class="page-heading">
+        <p class="eyebrow">A SMALL STEP, A MEANINGFUL DAY</p>
+        <h1>Daily <em>Challenge</em></h1>
+        <p>
+          A simple idea to help you take a Bible lesson
+          beyond the screen.
+        </p>
+      </div>
+
+      <div class="challenge-card">
+
+        <span class="challenge-sun">☀</span>
+
+        <p class="eyebrow">TODAY'S CAMP CHALLENGE</p>
+
+        <h2 id="challenge-title">
+          Make someone's day brighter
+        </h2>
+
+        <p id="challenge-copy">
+          Find one small way to encourage someone today.
+          You could offer help, share something, or simply listen carefully.
+        </p>
+
+        <div class="challenge-reference" id="challenge-reference">
+          Ephesians 4:32
+        </div>
+
+        <button class="button button-gold" id="complete-challenge">
+          I completed this challenge ✓
+        </button>
+
+        <p class="challenge-status" id="challenge-status" aria-live="polite"></p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ACHIEVEMENTS PAGE -->
+    <section class="page" id="page-achievements">
+
+      <div class="page-heading">
+        <p class="eyebrow">EVERY STEP COUNTS</p>
+        <h1>Your camp <em>achievements</em></h1>
+        <p>
+          Celebrate the things you've explored and learned.
+        </p>
+      </div>
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+          <strong id="stories-read">0</strong>
+          <span>Stories read</span>
+        </div>
+
+        <div class="stat-card">
+          <strong id="quiz-score">0</strong>
+          <span>Quiz points</span>
+        </div>
+
+        <div class="stat-card">
+          <strong id="challenges-done">0</strong>
+          <span>Challenges done</span>
+        </div>
+
+      </div>
+
+      <h2 class="subheading">Your badges</h2>
+
+      <div class="badge-grid" id="badge-grid"></div>
+
+    </section>
+
+
+    <!-- SONGS PAGE -->
+    <section class="page" id="page-songs">
+
+      <div class="page-heading">
+        <p class="eyebrow">SING • CELEBRATE • REMEMBER</p>
+        <h1>Bible <em>Songs</em></h1>
+        <p>
+          A little music can help a message stay with us.
+        </p>
+      </div>
+
+      <div class="songs-note">
+
+        <span>🎵</span>
+
+        <div>
+          <h2>Make a joyful noise!</h2>
+
+          <p>
+            This is the camp's song corner. Add links to songs
+            you have permission to share, or use your own
+            original recordings. You can expand this collection
+            whenever you like.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="song-placeholder">
+        <span>♫</span>
+        <b>Your song collection starts here</b>
+        <small>
+          We haven't added audio yet. This keeps the first
+          version lightweight and ready for your own song choices.
+        </small>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+
+    <div class="footer-brand">
+      ✦ Bible Camp
+    </div>
+
+    <p>
+      Keep growing. Keep asking. Keep exploring.
+    </p>
+
+    <small>
+      © 2026 Odelia Development Enterprises.
+      All rights reserved.
+    </small>
+
+  </footer>
+
+
+  <!-- NOTIFICATIONS -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+
+  <!-- JAVASCRIPT -->
+  <script src="js/stories.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
