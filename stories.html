@@ -4,1057 +4,594 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Story Library | Enchanted Bible Camp</title>
-
-    <!-- Your existing stylesheet -->
+    <title>Bible Story Library | Enchanted Bible Camp</title>
     <link rel="stylesheet" href="style.css">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            background: #F4F0DF;
-            color: #354334;
-            font-family: 'Nunito', sans-serif;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        /* HEADER */
-
-        header {
-            background: #234B35;
-            color: white;
-            padding: 20px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .brand a {
-            color: #F5D78E;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-        }
-
-        nav a {
-            color: white;
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-
-        nav a:hover,
-        nav a[aria-current="page"] {
-            color: #F5D78E;
-        }
-
-        /* HERO */
-
-        .hero {
-            background: linear-gradient(
-                135deg,
-                #234B35,
-                #496D4C
-            );
-            color: white;
-            text-align: center;
-            padding: 75px 20px;
-        }
-
-        .hero .eyebrow {
-            color: #F5D78E;
-            font-weight: 800;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            margin: 15px 0;
-        }
-
-        .hero p {
-            max-width: 650px;
-            margin: auto;
-            line-height: 1.8;
-            font-size: 1.05rem;
-            color: #F2EEDC;
-        }
-
-        /* MAIN CONTENT */
-
-        .container {
-            max-width: 1150px;
-            margin: auto;
-            padding: 50px 24px 75px;
-        }
-
-        .section-heading {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .section-heading h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: #234B35;
-        }
-
-        .section-heading p {
-            color: #69725D;
-        }
-
-        /* SEARCH */
-
-        .search-container {
-            max-width: 600px;
-            margin: 30px auto;
-        }
-
-        #storySearch {
-            width: 100%;
-            padding: 16px 22px;
-            border: 2px solid #A9B995;
-            border-radius: 35px;
-            font-family: inherit;
-            font-size: 1rem;
-            background: #FFFEF8;
-            color: #354334;
-        }
-
-        #storySearch:focus {
-            outline: 3px solid #E5BF67;
-        }
-
-        /* FILTERS */
-
-        .filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 25px 0 40px;
-        }
-
-        .filter-btn {
-            border: 2px solid #547451;
-            border-radius: 25px;
-            padding: 10px 19px;
-            background: transparent;
-            color: #234B35;
-            font-family: inherit;
-            font-weight: 800;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: #234B35;
-            color: white;
-        }
-
-        /* STORY CARDS */
-
-        .stories-grid {
-            display: grid;
-            grid-template-columns: repeat(
-                auto-fit,
-                minmax(250px, 1fr)
-            );
-            gap: 25px;
-        }
-
-        .story-card {
-            background: #FFFEF8;
-            border: 1px solid #E2D9BD;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 5px 18px rgba(35, 75, 53, 0.08);
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .story-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 24px rgba(35, 75, 53, 0.13);
-        }
-
-        .card-top {
-            background: #E8EDDA;
-            padding: 25px;
-            text-align: center;
-        }
-
-        .story-icon {
-            font-size: 3.5rem;
-        }
-
-        .card-body {
-            padding: 22px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .category {
-            color: #718354;
-            font-size: 0.75rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .card-body h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.45rem;
-            color: #234B35;
-            margin: 10px 0;
-        }
-
-        .card-body > p {
-            color: #626B58;
-            line-height: 1.7;
-            flex-grow: 1;
-        }
-
-        .reference {
-            color: #718354;
-            font-weight: 800;
-            font-size: 0.9rem;
-            margin: 10px 0 15px;
-        }
-
-        .read-btn {
-            border: none;
-            border-radius: 25px;
-            padding: 12px 18px;
-            background: #234B35;
-            color: white;
-            font-family: inherit;
-            font-size: 0.95rem;
-            font-weight: 800;
-            cursor: pointer;
-        }
-
-        .read-btn:hover {
-            background: #496D4C;
-        }
-
-        /* STORY TEXT */
-
-        .story-content {
-            display: none;
-            border-top: 1px solid #E2D9BD;
-            margin-top: 17px;
-            padding-top: 15px;
-            line-height: 1.85;
-            color: #4F5948;
-        }
-
-        .story-content p {
-            margin-bottom: 14px;
-        }
-
-        .story-card.expanded .story-content {
-            display: block;
-        }
-
-        .no-results {
-            display: none;
-            text-align: center;
-            padding: 40px;
-            color: #69725D;
-            font-size: 1.1rem;
-        }
-
-        /* FOOTER */
-
-        footer {
-            background: #234B35;
-            color: #F2EEDC;
-            text-align: center;
-            padding: 30px 20px;
-            line-height: 1.8;
-        }
-
-        footer p {
-            margin: 5px;
-        }
-
-        footer .footer-brand {
-            color: #F5D78E;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 650px) {
-            header {
-                justify-content: center;
-                text-align: center;
-            }
-
-            nav {
-                justify-content: center;
-                gap: 12px;
-            }
-
-            .hero {
-                padding: 55px 20px;
-            }
-
-            .container {
-                padding: 35px 17px 55px;
-            }
-
-            .stories-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">🌿 Enchanted Bible Camp</a>
 
-<header>
-    <div class="brand">
-        <a href="index.html">🌿 Enchanted Bible Camp</a>
-    </div>
-
-    <nav aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="stories.html" aria-current="page">Stories</a>
-        <a href="quiz.html">Quizzes</a>
-        <a href="challenge.html">Challenges</a>
-        <a href="achievements.html">Achievements</a>
-        <a href="songs.html">Songs</a>
-    </nav>
-</header>
-
-
-<!-- HERO SECTION -->
-
-<section class="hero">
-    <div class="eyebrow">Welcome to the Story Library</div>
-
-    <h1>Every Story Has a Lesson 📖</h1>
-
-    <p>
-        From brave heroes to incredible miracles, discover the
-        wonderful stories of the Bible. Explore, learn and grow
-        in faith, one story at a time.
-    </p>
-</section>
-
-
-<!-- STORY LIBRARY -->
-
-<main class="container">
-
-    <div class="section-heading">
-        <h2>Explore the Bible</h2>
-        <p>Find a story, settle in and discover something new.</p>
-    </div>
-
-
-    <!-- SEARCH -->
-
-    <div class="search-container">
-        <input
-            type="search"
-            id="storySearch"
-            placeholder="🔍 Search stories..."
-            aria-label="Search Bible stories"
-        >
-    </div>
-
-
-    <!-- FILTERS -->
-
-    <div class="filters">
-        <button class="filter-btn active" data-category="all">
-            All Stories
-        </button>
-
-        <button class="filter-btn" data-category="old">
-            Old Testament
-        </button>
-
-        <button class="filter-btn" data-category="new">
-            New Testament
-        </button>
-
-        <button class="filter-btn" data-category="faith">
-            Faith
-        </button>
-
-        <button class="filter-btn" data-category="courage">
-            Courage
-        </button>
-    </div>
-
-
-    <!-- STORIES -->
-
-    <section class="stories-grid" id="storiesGrid">
-
-        <!-- CREATION -->
-
-        <article class="story-card" data-category="old faith">
-            <div class="card-top">
-                <div class="story-icon">🌍</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="stories.html">Stories</a>
+                <a href="quizzes.html">Quizzes</a>
             </div>
+        </nav>
+    </header>
 
-            <div class="card-body">
-                <span class="category">Old Testament · Creation</span>
-                <h3>The Creation Story</h3>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-content">
+                <p class="hero-tagline">EXPLORE • DISCOVER • LEARN</p>
+
+                <h1>The Bible Story Library</h1>
 
                 <p>
-                    Discover how God created the heavens, the earth
-                    and everything in them.
+                    Discover incredible adventures, inspiring people,
+                    unforgettable moments and powerful lessons
+                    from the Bible.
                 </p>
+            </div>
+        </section>
 
-                <div class="reference">Genesis 1–2</div>
 
-                <button class="read-btn" aria-expanded="false">
-                    Read Story ↓
+        <!-- STORY LIBRARY -->
+        <section class="container library-section">
+
+            <div class="section-heading">
+                <p class="section-subtitle">YOUR NEXT ADVENTURE</p>
+                <h2>Choose a Story</h2>
+                <p>Which story would you like to explore today?</p>
+            </div>
+
+
+            <!-- SEARCH -->
+            <div class="story-search-area">
+                <input
+                    type="search"
+                    id="storySearch"
+                    placeholder="Search for a Bible story..."
+                    aria-label="Search Bible stories"
+                >
+            </div>
+
+
+            <!-- FILTERS -->
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">
+                    All Stories
                 </button>
 
-                <div class="story-content">
-                    <p>
-                        In the beginning, there was nothing but darkness.
-                        Then God began to create. He made light and
-                        separated it from darkness.
-                    </p>
+                <button class="filter-btn" data-filter="old">
+                    Old Testament
+                </button>
 
-                    <p>
-                        He made the sky, the land and the seas. He filled
-                        the earth with plants, trees and living creatures.
-                        He made the sun, moon and stars, as well as birds,
-                        fish and animals.
-                    </p>
-
-                    <p>
-                        Finally, God created human beings in His image.
-                        He saw everything He had made, and it was very good.
-                        On the seventh day, God rested.
-                    </p>
-
-                    <p>
-                        <strong>Camp Lesson:</strong>
-                        Creation reminds us that the world is precious
-                        and that everything has a beginning in God.
-                    </p>
-                </div>
-            </div>
-        </article>
-
-
-        <!-- NOAH -->
-
-        <article class="story-card" data-category="old faith courage">
-            <div class="card-top">
-                <div class="story-icon">🛶</div>
+                <button class="filter-btn" data-filter="new">
+                    New Testament
+                </button>
             </div>
 
-            <div class="card-body">
-                <span class="category">Old Testament · Faith</span>
-                <h3>Noah and the Ark</h3>
+
+            <!-- STORY CARDS -->
+            <div class="stories-grid" id="storiesGrid">
+
+                <!-- OLD TESTAMENT -->
+
+                <a href="stories/creation.html"
+                   class="story-card"
+                   data-category="old"
+                   data-title="creation">
+
+                    <div class="card-top">
+                        <div class="story-icon">🌍</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">OLD TESTAMENT</p>
+                        <h3>The Creation</h3>
+                        <p>Discover how God created the heavens and the earth.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/noah.html"
+                   class="story-card"
+                   data-category="old"
+                   data-title="noah noahs ark">
+
+                    <div class="card-top">
+                        <div class="story-icon">🌧️</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">OLD TESTAMENT</p>
+                        <h3>Noah's Ark</h3>
+                        <p>Explore the story of Noah, the great flood and the ark.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/abraham.html"
+                   class="story-card"
+                   data-category="old"
+                   data-title="abraham">
+
+                    <div class="card-top">
+                        <div class="story-icon">⭐</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">OLD TESTAMENT</p>
+                        <h3>Abraham</h3>
+                        <p>Discover Abraham's journey of faith and God's promises.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/joseph.html"
+                   class="story-card"
+                   data-category="old"
+                   data-title="joseph">
+
+                    <div class="card-top">
+                        <div class="story-icon">🌈</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">OLD TESTAMENT</p>
+                        <h3>Joseph</h3>
+                        <p>Follow Joseph's journey from his dreams to Egypt.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/moses.html"
+                   class="story-card"
+                   data-category="old"
+                   data-title="moses">
+
+                    <div class="card-top">
+                        <div class="story-icon">🔥</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">OLD TESTAMENT</p>
+                        <h3>Moses</h3>
+                        <p>Learn how Moses led the Israelites out of Egypt.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/joshua.html"
+                   class="story-card"
+                   data-category="old"
+                   data-title="joshua">
+
+                    <div class="card-top">
+                        <div class="story-icon">⚔️</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">OLD TESTAMENT</p>
+                        <h3>Joshua</h3>
+                        <p>Discover Joshua's leadership and the journey into Canaan.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/ruth.html"
+                   class="story-card"
+                   data-category="old"
+                   data-title="ruth">
+
+                    <div class="card-top">
+                        <div class="story-icon">🌾</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">OLD TESTAMENT</p>
+                        <h3>Ruth</h3>
+                        <p>Explore a beautiful story of loyalty, kindness and love.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/david.html"
+                   class="story-card"
+                   data-category="old"
+                   data-title="david">
+
+                    <div class="card-top">
+                        <div class="story-icon">🪨</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">OLD TESTAMENT</p>
+                        <h3>David and Goliath</h3>
+                        <p>See how a young shepherd faced a mighty giant.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/solomon.html"
+                   class="story-card"
+                   data-category="old"
+                   data-title="solomon">
+
+                    <div class="card-top">
+                        <div class="story-icon">👑</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">OLD TESTAMENT</p>
+                        <h3>Solomon</h3>
+                        <p>Discover the king who asked God for wisdom.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/elijah.html"
+                   class="story-card"
+                   data-category="old"
+                   data-title="elijah">
+
+                    <div class="card-top">
+                        <div class="story-icon">🔥</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">OLD TESTAMENT</p>
+                        <h3>Elijah</h3>
+                        <p>Learn about the prophet who stood boldly for God.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/esther.html"
+                   class="story-card"
+                   data-category="old"
+                   data-title="esther">
+
+                    <div class="card-top">
+                        <div class="story-icon">👸</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">OLD TESTAMENT</p>
+                        <h3>Esther</h3>
+                        <p>Meet the queen who showed courage and saved her people.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/daniel.html"
+                   class="story-card"
+                   data-category="old"
+                   data-title="daniel">
+
+                    <div class="card-top">
+                        <div class="story-icon">🦁</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">OLD TESTAMENT</p>
+                        <h3>Daniel in the Lions' Den</h3>
+                        <p>Discover Daniel's faith in the face of danger.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/jonah.html"
+                   class="story-card"
+                   data-category="old"
+                   data-title="jonah">
+
+                    <div class="card-top">
+                        <div class="story-icon">🐋</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">OLD TESTAMENT</p>
+                        <h3>Jonah and the Great Fish</h3>
+                        <p>Follow Jonah's unexpected journey and learn about obedience.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <!-- NEW TESTAMENT -->
+
+                <a href="stories/birth-of-jesus.html"
+                   class="story-card"
+                   data-category="new"
+                   data-title="birth of jesus">
+
+                    <div class="card-top">
+                        <div class="story-icon">🌟</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">NEW TESTAMENT</p>
+                        <h3>The Birth of Jesus</h3>
+                        <p>Discover the story of Jesus' miraculous birth in Bethlehem.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/baptism-of-jesus.html"
+                   class="story-card"
+                   data-category="new"
+                   data-title="baptism of jesus">
+
+                    <div class="card-top">
+                        <div class="story-icon">🕊️</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">NEW TESTAMENT</p>
+                        <h3>The Baptism of Jesus</h3>
+                        <p>Learn about Jesus' baptism in the River Jordan.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/miracles-of-jesus.html"
+                   class="story-card"
+                   data-category="new"
+                   data-title="miracles of jesus">
+
+                    <div class="card-top">
+                        <div class="story-icon">✨</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">NEW TESTAMENT</p>
+                        <h3>The Miracles of Jesus</h3>
+                        <p>Explore the amazing miracles Jesus performed.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/good-samaritan.html"
+                   class="story-card"
+                   data-category="new"
+                   data-title="good samaritan">
+
+                    <div class="card-top">
+                        <div class="story-icon">❤️</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">NEW TESTAMENT</p>
+                        <h3>The Good Samaritan</h3>
+                        <p>Discover what it means to show kindness to others.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/prodigal-son.html"
+                   class="story-card"
+                   data-category="new"
+                   data-title="prodigal son">
+
+                    <div class="card-top">
+                        <div class="story-icon">🏡</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">NEW TESTAMENT</p>
+                        <h3>The Prodigal Son</h3>
+                        <p>Explore a parable about forgiveness and a father's love.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/crucifixion.html"
+                   class="story-card"
+                   data-category="new"
+                   data-title="crucifixion of jesus">
+
+                    <div class="card-top">
+                        <div class="story-icon">✝️</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">NEW TESTAMENT</p>
+                        <h3>The Crucifixion</h3>
+                        <p>Learn about the events leading to Jesus' death.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/resurrection.html"
+                   class="story-card"
+                   data-category="new"
+                   data-title="resurrection of jesus">
+
+                    <div class="card-top">
+                        <div class="story-icon">🌅</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">NEW TESTAMENT</p>
+                        <h3>The Resurrection</h3>
+                        <p>Celebrate the story of Jesus rising from the dead.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/ascension.html"
+                   class="story-card"
+                   data-category="new"
+                   data-title="ascension of jesus">
+
+                    <div class="card-top">
+                        <div class="story-icon">☁️</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">NEW TESTAMENT</p>
+                        <h3>The Ascension</h3>
+                        <p>Discover what happened when Jesus returned to heaven.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+
+                <a href="stories/pentecost.html"
+                   class="story-card"
+                   data-category="new"
+                   data-title="pentecost">
+
+                    <div class="card-top">
+                        <div class="story-icon">🔥</div>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="story-category">NEW TESTAMENT</p>
+                        <h3>Pentecost</h3>
+                        <p>Learn about the coming of the Holy Spirit.</p>
+                        <span>Read Story →</span>
+                    </div>
+                </a>
+
+            </div>
+
+
+            <p id="noResults" class="no-results" hidden>
+                No stories found. Try another search!
+            </p>
+
+        </section>
+
+
+        <!-- QUIZ PROMOTION -->
+        <section class="camp-cta">
+            <div class="container">
+                <p class="section-subtitle">READY TO TEST YOUR KNOWLEDGE?</p>
+
+                <h2>Think You Know These Stories?</h2>
 
                 <p>
-                    A man, a giant boat, two of every kind of animal
-                    and an incredible storm.
+                    Put your Bible knowledge to the test with our
+                    interactive quizzes!
                 </p>
 
-                <div class="reference">Genesis 6–9</div>
-
-                <button class="read-btn" aria-expanded="false">
-                    Read Story ↓
-                </button>
-
-                <div class="story-content">
-                    <p>
-                        God saw that the world had become full of
-                        wickedness. But Noah was a righteous man
-                        who walked with God.
-                    </p>
-
-                    <p>
-                        God instructed Noah to build a great ark.
-                        Noah followed God's instructions and brought
-                        his family and the animals into the ark.
-                    </p>
-
-                    <p>
-                        Then the rain began. It continued for forty
-                        days and forty nights. Noah, his family and
-                        the animals were safe inside the ark.
-                    </p>
-
-                    <p>
-                        When the waters went down, God placed a rainbow
-                        in the sky as a sign of His covenant with the earth.
-                    </p>
-
-                    <p>
-                        <strong>Camp Lesson:</strong>
-                        Noah teaches us about obedience, faith and
-                        God's promises.
-                    </p>
-                </div>
+                <a href="quizzes.html" class="btn btn-primary">
+                    Visit the Quiz Corner →
+                </a>
             </div>
-        </article>
-
-
-        <!-- DAVID -->
-
-        <article class="story-card" data-category="old courage faith">
-            <div class="card-top">
-                <div class="story-icon">🪨</div>
-            </div>
-
-            <div class="card-body">
-                <span class="category">Old Testament · Courage</span>
-                <h3>David and Goliath</h3>
-
-                <p>
-                    How a young shepherd faced a mighty warrior
-                    with nothing but a sling and faith.
-                </p>
-
-                <div class="reference">1 Samuel 17</div>
-
-                <button class="read-btn" aria-expanded="false">
-                    Read Story ↓
-                </button>
-
-                <div class="story-content">
-                    <p>
-                        The Israelites were facing the Philistines.
-                        Their greatest warrior was Goliath, a giant
-                        who challenged anyone to fight him.
-                    </p>
-
-                    <p>
-                        Everyone was afraid. But David, a young shepherd,
-                        believed that God would help him.
-                    </p>
-
-                    <p>
-                        David refused the king's armour. Instead,
-                        he took his sling and five smooth stones.
-                        He approached Goliath in the name of the Lord.
-                    </p>
-
-                    <p>
-                        David launched a stone with his sling.
-                        It struck Goliath, who fell to the ground.
-                        The Israelites won the battle.
-                    </p>
-
-                    <p>
-                        <strong>Camp Lesson:</strong>
-                        Courage isn't about being the biggest or strongest.
-                        It is about trusting God when something seems impossible.
-                    </p>
-                </div>
-            </div>
-        </article>
-
-
-        <!-- DANIEL -->
-
-        <article class="story-card" data-category="old faith courage">
-            <div class="card-top">
-                <div class="story-icon">🦁</div>
-            </div>
-
-            <div class="card-body">
-                <span class="category">Old Testament · Faith</span>
-                <h3>Daniel in the Lions' Den</h3>
-
-                <p>
-                    Daniel refused to abandon his faith, even when
-                    doing so put his life at risk.
-                </p>
-
-                <div class="reference">Daniel 6</div>
-
-                <button class="read-btn" aria-expanded="false">
-                    Read Story ↓
-                </button>
-
-                <div class="story-content">
-                    <p>
-                        Daniel was a respected official in the kingdom.
-                        Some jealous officials wanted to find a reason
-                        to punish him.
-                    </p>
-
-                    <p>
-                        They convinced the king to make a law forbidding
-                        anyone from praying to anyone other than the king
-                        for thirty days.
-                    </p>
-
-                    <p>
-                        Daniel continued praying to God three times a day.
-                        He was arrested and thrown into a den of lions.
-                    </p>
-
-                    <p>
-                        But God sent an angel to shut the lions' mouths.
-                        Daniel was found unharmed the next morning.
-                    </p>
-
-                    <p>
-                        <strong>Camp Lesson:</strong>
-                        Daniel teaches us to remain faithful even
-                        when it is difficult.
-                    </p>
-                </div>
-            </div>
-        </article>
-
-
-        <!-- JONAH -->
-
-        <article class="story-card" data-category="old faith">
-            <div class="card-top">
-                <div class="story-icon">🐋</div>
-            </div>
-
-            <div class="card-body">
-                <span class="category">Old Testament · Obedience</span>
-                <h3>Jonah and the Great Fish</h3>
-
-                <p>
-                    A reluctant prophet, a terrible storm and
-                    an extraordinary encounter at sea.
-                </p>
-
-                <div class="reference">Jonah 1–4</div>
-
-                <button class="read-btn" aria-expanded="false">
-                    Read Story ↓
-                </button>
-
-                <div class="story-content">
-                    <p>
-                        God told Jonah to go to Nineveh and warn
-                        its people about their wicked behaviour.
-                        But Jonah did not want to go.
-                    </p>
-
-                    <p>
-                        Instead, he boarded a ship travelling in
-                        the opposite direction. A terrible storm
-                        struck the sea.
-                    </p>
-
-                    <p>
-                        Jonah eventually found himself thrown into
-                        the sea, where a great fish swallowed him.
-                        He remained inside the fish for three days
-                        and three nights.
-                    </p>
-
-                    <p>
-                        Jonah prayed to God, and the fish released him
-                        onto dry land. He then went to Nineveh and
-                        delivered God's message.
-                    </p>
-
-                    <p>
-                        <strong>Camp Lesson:</strong>
-                        Jonah's story teaches us about obedience,
-                        second chances and God's mercy.
-                    </p>
-                </div>
-            </div>
-        </article>
-
-
-        <!-- JESUS WALKS ON WATER -->
-
-        <article class="story-card" data-category="new faith courage">
-            <div class="card-top">
-                <div class="story-icon">🌊</div>
-            </div>
-
-            <div class="card-body">
-                <span class="category">New Testament · Faith</span>
-                <h3>Jesus Walks on Water</h3>
-
-                <p>
-                    A storm, frightened disciples and an extraordinary
-                    moment of faith.
-                </p>
-
-                <div class="reference">Matthew 14:22–33</div>
-
-                <button class="read-btn" aria-expanded="false">
-                    Read Story ↓
-                </button>
-
-                <div class="story-content">
-                    <p>
-                        Jesus sent His disciples ahead of Him in a boat
-                        while He went up a mountain to pray.
-                    </p>
-
-                    <p>
-                        During the night, a strong wind troubled the boat.
-                        Then the disciples saw Jesus walking towards them
-                        on the water.
-                    </p>
-
-                    <p>
-                        Peter asked Jesus to let him come to Him.
-                        Peter stepped out of the boat and began walking
-                        towards Jesus.
-                    </p>
-
-                    <p>
-                        But when Peter noticed the strong wind,
-                        he became afraid and started sinking.
-                        Jesus immediately reached out and caught him.
-                    </p>
-
-                    <p>
-                        <strong>Camp Lesson:</strong>
-                        Trust Jesus even when life feels frightening.
-                    </p>
-                </div>
-            </div>
-        </article>
-
-
-        <!-- GOOD SAMARITAN -->
-
-        <article class="story-card" data-category="new faith">
-            <div class="card-top">
-                <div class="story-icon">❤️</div>
-            </div>
-
-            <div class="card-body">
-                <span class="category">New Testament · Kindness</span>
-                <h3>The Good Samaritan</h3>
-
-                <p>
-                    A story about kindness, compassion and helping
-                    someone who needs you.
-                </p>
-
-                <div class="reference">Luke 10:25–37</div>
-
-                <button class="read-btn" aria-expanded="false">
-                    Read Story ↓
-                </button>
-
-                <div class="story-content">
-                    <p>
-                        A man was travelling from Jerusalem to Jericho
-                        when robbers attacked him. They took his belongings,
-                        beat him and left him injured on the road.
-                    </p>
-
-                    <p>
-                        A priest passed by without helping.
-                        A Levite also saw him but continued walking.
-                    </p>
-
-                    <p>
-                        Then a Samaritan came along. He stopped,
-                        treated the man's wounds and took him to an inn.
-                        He even paid for his care.
-                    </p>
-
-                    <p>
-                        Jesus told this story to teach that our neighbour
-                        is anyone who needs our kindness.
-                    </p>
-
-                    <p>
-                        <strong>Camp Lesson:</strong>
-                        Love is shown through our actions, not just our words.
-                    </p>
-                </div>
-            </div>
-        </article>
-
-
-        <!-- LOST SHEEP -->
-
-        <article class="story-card" data-category="new faith">
-            <div class="card-top">
-                <div class="story-icon">🐑</div>
-            </div>
-
-            <div class="card-body">
-                <span class="category">New Testament · Love</span>
-                <h3>The Lost Sheep</h3>
-
-                <p>
-                    A shepherd leaves ninety-nine sheep to find
-                    the one that has wandered away.
-                </p>
-
-                <div class="reference">Luke 15:1–7</div>
-
-                <button class="read-btn" aria-expanded="false">
-                    Read Story ↓
-                </button>
-
-                <div class="story-content">
-                    <p>
-                        Jesus told a story about a shepherd who had
-                        one hundred sheep.
-                    </p>
-
-                    <p>
-                        When one went missing, he left the ninety-nine
-                        and went searching for the lost one.
-                    </p>
-
-                    <p>
-                        When he found it, he joyfully carried it home
-                        on his shoulders.
-                    </p>
-
-                    <p>
-                        He called his friends and neighbours together
-                        to celebrate because the lost sheep had been found.
-                    </p>
-
-                    <p>
-                        <strong>Camp Lesson:</strong>
-                        God's love reaches every person. No one is forgotten.
-                    </p>
-                </div>
-            </div>
-        </article>
-
-
-        <!-- RESURRECTION -->
-
-        <article class="story-card" data-category="new faith courage">
-            <div class="card-top">
-                <div class="story-icon">✨</div>
-            </div>
-
-            <div class="card-body">
-                <span class="category">New Testament · Hope</span>
-                <h3>The Resurrection of Jesus</h3>
-
-                <p>
-                    The story of the empty tomb and the discovery
-                    that Jesus had risen.
-                </p>
-
-                <div class="reference">
-                    Matthew 28; Mark 16; Luke 24; John 20
-                </div>
-
-                <button class="read-btn" aria-expanded="false">
-                    Read Story ↓
-                </button>
+        </section>
 
-                <div class="story-content">
-                    <p>
-                        After Jesus was crucified and buried,
-                        His followers were heartbroken.
-                    </p>
+    </main>
 
-                    <p>
-                        On the third day, some women went to the tomb.
-                        They discovered that the stone had been moved
-                        and that the tomb was empty.
-                    </p>
 
-                    <p>
-                        An angel told them that Jesus had risen,
-                        just as He had promised.
-                    </p>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <p>🌿 Enchanted Bible Camp</p>
 
-                    <p>
-                        Jesus later appeared to His followers,
-                        bringing them hope and joy.
-                    </p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="stories.html">Stories</a>
+            <a href="quizzes.html">Quizzes</a>
+        </div>
 
-                    <p>
-                        <strong>Camp Lesson:</strong>
-                        For Christians, the resurrection is the
-                        foundation of their hope and faith.
-                    </p>
-                </div>
-            </div>
-        </article>
+        <p>© 2026 Odelia Development Enterprises. All rights reserved.</p>
+    </footer>
 
-    </section>
 
+    <!-- SEARCH AND FILTER SCRIPT -->
+    <script>
 
-    <div class="no-results" id="noResults">
-        🌿 No stories found. Try another search!
-    </div>
+        const searchInput = document.getElementById("storySearch");
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const storyCards = document.querySelectorAll(".story-card");
+        const noResults = document.getElementById("noResults");
 
-</main>
+        let activeFilter = "all";
 
+        function filterStories() {
 
-<!-- FOOTER -->
+            const searchTerm = searchInput.value.toLowerCase().trim();
 
-<footer>
-    <p class="footer-brand">🌿 Enchanted Bible Camp</p>
-    <p>Growing in faith, one story at a time.</p>
-    <p>© 2026 Odelia Development Enterprises. All rights reserved.</p>
-</footer>
+            let visibleCount = 0;
 
+            storyCards.forEach(function(card) {
 
-<!-- JAVASCRIPT -->
+                const title = card.dataset.title.toLowerCase();
+                const category = card.dataset.category;
 
-<script>
+                const matchesSearch = title.includes(searchTerm);
 
-    const searchInput =
-        document.getElementById("storySearch");
+                const matchesFilter =
+                    activeFilter === "all" ||
+                    category === activeFilter;
 
-    const cards =
-        document.querySelectorAll(".story-card");
+                if (matchesSearch && matchesFilter) {
 
-    const filterButtons =
-        document.querySelectorAll(".filter-btn");
+                    card.style.display = "";
+                    visibleCount++;
 
-    const noResults =
-        document.getElementById("noResults");
+                } else {
 
-    let activeCategory = "all";
+                    card.style.display = "none";
 
+                }
 
-    // SEARCH AND FILTER
-
-    function filterStories() {
-
-        const searchTerm =
-            searchInput.value.toLowerCase().trim();
-
-        let visibleCount = 0;
-
-        cards.forEach(card => {
-
-            const text =
-                card.textContent.toLowerCase();
-
-            const categories =
-                card.dataset.category.split(" ");
-
-            const matchesSearch =
-                text.includes(searchTerm);
-
-            const matchesCategory =
-                activeCategory === "all" ||
-                categories.includes(activeCategory);
-
-            const isVisible =
-                matchesSearch && matchesCategory;
-
-            card.style.display =
-                isVisible ? "flex" : "none";
-
-            if (isVisible) {
-                visibleCount++;
-            }
-
-        });
-
-        noResults.style.display =
-            visibleCount === 0 ? "block" : "none";
-
-    }
-
-
-    // SEARCH INPUT
-
-    searchInput.addEventListener(
-        "input",
-        filterStories
-    );
-
-
-    // CATEGORY BUTTONS
-
-    filterButtons.forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            filterButtons.forEach(btn => {
-                btn.classList.remove("active");
             });
 
-            button.classList.add("active");
+            noResults.hidden = visibleCount !== 0;
 
-            activeCategory =
-                button.dataset.category;
-
-            filterStories();
-
-        });
-
-    });
+        }
 
 
-    // OPEN AND CLOSE STORIES
+        searchInput.addEventListener("input", filterStories);
 
-    document.querySelectorAll(".read-btn")
-        .forEach(button => {
 
-            button.addEventListener("click", () => {
+        filterButtons.forEach(function(button) {
 
-                const card =
-                    button.closest(".story-card");
+            button.addEventListener("click", function() {
 
-                const isExpanded =
-                    card.classList.toggle("expanded");
+                filterButtons.forEach(function(item) {
+                    item.classList.remove("active");
+                });
 
-                button.textContent = isExpanded
-                    ? "Close Story ↑"
-                    : "Read Story ↓";
+                button.classList.add("active");
 
-                button.setAttribute(
-                    "aria-expanded",
-                    isExpanded
-                );
+                activeFilter = button.dataset.filter;
+
+                filterStories();
 
             });
 
         });
 
-</script>
+    </script>
 
 </body>
 </html>
