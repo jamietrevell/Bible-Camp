@@ -4,1039 +4,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Enchanted Bible Camp | A Little Place to Grow in Faith</title>
-
-    <meta name="description" content="Explore Bible stories, discover faith, take quizzes and enjoy the magic of learning at Enchanted Bible Camp.">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Shared stylesheet, located beside index.html -->
+    <title>Enchanted Bible Camp | Discover the Bible</title>
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        :root {
-            --forest: #193D2B;
-            --forest-light: #315A40;
-            --sage: #829477;
-            --sage-light: #E5EBDD;
-            --cream: #F7F3E8;
-            --paper: #FFFDF7;
-            --gold: #D8B66C;
-            --gold-light: #F0DDAE;
-            --ink: #303C31;
-            --muted: #737B6B;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-            background: var(--cream);
-            color: var(--ink);
-            font-family: 'DM Sans', sans-serif;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button {
-            font-family: inherit;
-        }
-
-        /* NAVIGATION */
-
-        .navbar {
-            min-height: 82px;
-            padding: 0 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--forest);
-            color: white;
-            position: relative;
-            z-index: 10;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--gold-light);
-            white-space: nowrap;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-
-        .nav-links a {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #F4F0E5;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .nav-links .nav-cta {
-            background: var(--gold);
-            color: var(--forest);
-            padding: 12px 21px;
-            border-radius: 30px;
-        }
-
-        .nav-links .nav-cta:hover {
-            background: white;
-            color: var(--forest);
-        }
-
-        .menu-toggle {
-            display: none;
-            border: 1px solid #78917B;
-            color: white;
-            background: transparent;
-            padding: 9px 13px;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        /* HERO */
-
-        .hero {
-            min-height: 620px;
-            padding: 90px 7%;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            color: white;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    rgba(17, 48, 32, 0.97) 0%,
-                    rgba(25, 61, 43, 0.89) 48%,
-                    rgba(25, 61, 43, 0.35) 100%
-                ),
-                url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2000&q=85");
-
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: auto 0 0;
-            height: 100px;
-            background: linear-gradient(transparent, var(--cream));
-            pointer-events: none;
-        }
-
-        .hero-content {
-            max-width: 700px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            color: var(--gold-light);
-            text-transform: uppercase;
-            font-size: 0.78rem;
-            letter-spacing: 3px;
-            font-weight: 800;
-            margin-bottom: 22px;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 7vw, 5.7rem);
-            line-height: 1.07;
-            font-weight: 600;
-            margin: 0 0 25px;
-            letter-spacing: -2px;
-        }
-
-        .hero h1 span {
-            color: var(--gold-light);
-            font-style: italic;
-        }
-
-        .hero-description {
-            max-width: 540px;
-            color: #E5E9DD;
-            font-size: 1.08rem;
-            line-height: 1.9;
-            margin-bottom: 35px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-        }
-
-        .button-primary {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            background: var(--gold);
-            color: var(--forest);
-            padding: 16px 27px;
-            border-radius: 35px;
-            font-weight: 800;
-            transition: 0.2s;
-        }
-
-        .button-primary:hover {
-            background: white;
-            transform: translateY(-3px);
-        }
-
-        .button-secondary {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid rgba(255,255,255,0.65);
-            color: white;
-            padding: 15px 27px;
-            border-radius: 35px;
-            font-weight: 700;
-            transition: 0.2s;
-        }
-
-        .button-secondary:hover {
-            background: rgba(255,255,255,0.12);
-        }
-
-        .hero-decoration {
-            position: absolute;
-            right: 9%;
-            bottom: 17%;
-            font-size: 5rem;
-            opacity: 0.65;
-            z-index: 1;
-        }
-
-        /* INTRODUCTION */
-
-        .welcome {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 65px 25px 75px;
-            text-align: center;
-        }
-
-        .eyebrow {
-            color: #8A774C;
-            text-transform: uppercase;
-            font-size: 0.76rem;
-            font-weight: 800;
-            letter-spacing: 3px;
-        }
-
-        .welcome h2,
-        .section-heading h2 {
-            font-family: 'Playfair Display', serif;
-            color: var(--forest);
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin: 16px 0;
-        }
-
-        .welcome p {
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.9;
-            color: var(--muted);
-            font-size: 1.03rem;
-        }
-
-        .welcome-decoration {
-            margin-top: 25px;
-            color: var(--sage);
-            letter-spacing: 12px;
-            font-size: 1.2rem;
-        }
-
-        /* ACTIVITIES */
-
-        .activities {
-            background: var(--paper);
-            padding: 85px 7%;
-        }
-
-        .section-heading {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .section-heading p {
-            color: var(--muted);
-            line-height: 1.7;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .activity-grid {
-            max-width: 1180px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .activity-card {
-            background: var(--cream);
-            border: 1px solid #E8E1D0;
-            border-radius: 18px;
-            overflow: hidden;
-            transition: transform 0.25s, box-shadow 0.25s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .activity-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 14px 30px rgba(25,61,43,0.10);
-        }
-
-        .activity-image {
-            height: 155px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            background: var(--sage-light);
-        }
-
-        .activity-card:nth-child(2) .activity-image {
-            background: #F1E6CE;
-        }
-
-        .activity-card:nth-child(3) .activity-image {
-            background: #E9E4D6;
-        }
-
-        .activity-card:nth-child(4) .activity-image {
-            background: #E8EBD9;
-        }
-
-        .activity-body {
-            padding: 23px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .activity-body h3 {
-            color: var(--forest);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.35rem;
-            margin: 0 0 10px;
-        }
-
-        .activity-body p {
-            color: var(--muted);
-            line-height: 1.7;
-            font-size: 0.91rem;
-            flex: 1;
-        }
-
-        .activity-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            color: var(--forest-light);
-            font-weight: 800;
-            font-size: 0.9rem;
-            margin-top: 12px;
-        }
-
-        .activity-link:hover {
-            color: #A17B36;
-        }
-
-        /* FEATURE SECTION */
-
-        .feature {
-            padding: 95px 7%;
-            background: var(--forest);
-            color: white;
-        }
-
-        .feature-inner {
-            max-width: 1100px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 65px;
-        }
-
-        .feature-illustration {
-            min-height: 370px;
-            border-radius: 22px;
-            background:
-                linear-gradient(rgba(18,49,33,0.2), rgba(18,49,33,0.45)),
-                url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=85");
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.18);
-        }
-
-        .feature-symbol {
-            font-size: 5rem;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
-        }
-
-        .feature-copy .eyebrow {
-            color: var(--gold);
-        }
-
-        .feature-copy h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            line-height: 1.2;
-            margin: 17px 0;
-        }
-
-        .feature-copy p {
-            color: #D6E0D5;
-            line-height: 1.9;
-            margin-bottom: 30px;
-        }
-
-        /* VERSE / REFLECTION */
-
-        .reflection {
-            padding: 85px 25px;
-            background: var(--gold-light);
-            text-align: center;
-        }
-
-        .reflection-inner {
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .reflection-icon {
-            font-size: 2.3rem;
-        }
-
-        .reflection h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--forest);
-            margin: 15px 0;
-        }
-
-        .reflection p {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 1.4rem;
-            line-height: 1.7;
-            color: #48563F;
-        }
-
-        .reflection small {
-            color: #77613B;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        /* FINAL CTA */
-
-        .final-cta {
-            padding: 85px 25px;
-            text-align: center;
-            background: var(--cream);
-        }
-
-        .final-cta h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--forest);
-            margin: 0 0 15px;
-        }
-
-        .final-cta p {
-            color: var(--muted);
-            line-height: 1.8;
-            margin-bottom: 28px;
-        }
-
-        /* FOOTER */
-
-        .footer {
-            background: #112D20;
-            color: #DCE4D7;
-            padding: 55px 7% 25px;
-        }
-
-        .footer-main {
-            max-width: 1100px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 35px;
-            padding-bottom: 35px;
-        }
-
-        .footer-brand {
-            max-width: 360px;
-        }
-
-        .footer-brand h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--gold-light);
-            font-size: 1.5rem;
-            margin: 0 0 12px;
-        }
-
-        .footer-brand p {
-            line-height: 1.8;
-            color: #B9C7B8;
-        }
-
-        .footer-links h4 {
-            color: var(--gold-light);
-            margin-top: 0;
-        }
-
-        .footer-links a {
-            display: block;
-            margin: 12px 0;
-            color: #DCE4D7;
-            font-size: 0.9rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-
-        .copyright {
-            border-top: 1px solid rgba(255,255,255,0.15);
-            padding-top: 22px;
-            text-align: center;
-            color: #AAB8A9;
-            font-size: 0.82rem;
-            line-height: 1.8;
-        }
-
-        /* RESPONSIVE */
-
-        @media (max-width: 950px) {
-            .activity-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .feature-inner {
-                gap: 35px;
-            }
-        }
-
-        @media (max-width: 700px) {
-            .navbar {
-                min-height: 72px;
-                padding: 0 5%;
-                flex-wrap: wrap;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0;
-                padding: 8px 0 20px;
-            }
-
-            .nav-links.open {
-                display: flex;
-            }
-
-            .nav-links a {
-                padding: 13px 5px;
-            }
-
-            .nav-links .nav-cta {
-                text-align: center;
-                margin-top: 8px;
-            }
-
-            .hero {
-                min-height: 580px;
-                padding: 70px 7%;
-                background-position: center;
-            }
-
-            .hero-decoration {
-                right: 5%;
-                bottom: 10%;
-                font-size: 3.5rem;
-            }
-
-            .activity-grid {
-                grid-template-columns: 1fr;
-                max-width: 440px;
-            }
-
-            .feature-inner {
-                grid-template-columns: 1fr;
-            }
-
-            .feature-illustration {
-                min-height: 260px;
-            }
-
-            .footer-main {
-                flex-direction: column;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">🌿 Enchanted Bible Camp</a>
 
-    <header class="navbar">
-
-        <a href="index.html" class="logo">
-            🌿 Enchanted Bible Camp
-        </a>
-
-        <button
-            class="menu-toggle"
-            id="menuToggle"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-        >
-            ☰
-        </button>
-
-        <nav class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="stories.html">Stories</a>
-            <a href="#activities">Camp Activities</a>
-            <a href="#about">About</a>
-            <a href="stories.html" class="nav-cta">Enter the Camp →</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="stories.html">Stories</a>
+                <a href="quizzes.html">Quizzes</a>
+            </div>
         </nav>
-
     </header>
-
-
-    <!-- HERO -->
 
     <main>
 
+        <!-- HERO SECTION -->
         <section class="hero">
-
             <div class="hero-content">
+                <p class="hero-tagline">A LITTLE PLACE TO LEARN, GROW AND EXPLORE</p>
 
-                <div class="hero-label">
-                    ✦ A little place to grow in faith ✦
-                </div>
+                <h1>Welcome to Enchanted Bible Camp!</h1>
 
-                <h1>
-                    Where Faith<br>
-                    Meets <span>Wonder.</span>
-                </h1>
-
-                <p class="hero-description">
-                    Welcome to Enchanted Bible Camp, a little corner
-                    of the world where Bible stories come alive,
-                    curiosity is encouraged and every discovery
-                    brings us closer to understanding faith.
+                <p>
+                    Step into a world of incredible Bible stories,
+                    unforgettable characters, exciting challenges
+                    and wonderful discoveries.
                 </p>
 
                 <div class="hero-buttons">
-
-                    <a href="stories.html" class="button-primary">
-                        Explore Bible Stories →
+                    <a href="stories.html" class="btn btn-primary">
+                        Explore Bible Stories
                     </a>
 
-                    <a href="#activities" class="button-secondary">
-                        Discover the Camp
+                    <a href="quizzes.html" class="btn btn-secondary">
+                        Take a Quiz
                     </a>
-
                 </div>
-
             </div>
-
-            <div class="hero-decoration">✦</div>
-
         </section>
 
 
-        <!-- WELCOME -->
-
-        <section class="welcome" id="about">
-
-            <div class="eyebrow">A world of discovery</div>
-
-            <h2>Welcome, Little Explorer.</h2>
+        <!-- WELCOME SECTION -->
+        <section class="container welcome-section">
+            <div class="section-heading">
+                <p class="section-subtitle">YOUR ADVENTURE STARTS HERE</p>
+                <h2>More Than Just Reading</h2>
+            </div>
 
             <p>
-                Think of this as your own little camp in the middle
-                of an enchanted forest. There are stories to discover,
-                questions to answer, challenges to complete and
-                lessons to carry with you long after you leave.
-
-                Whether you're discovering the Bible for the first
-                time or returning to familiar stories, there's always
-                something new to learn.
+                The Bible is full of amazing stories about courage,
+                faith, kindness, friendship, forgiveness and love.
+                At Enchanted Bible Camp, you can explore these stories
+                in an engaging and enjoyable way.
             </p>
 
-            <div class="welcome-decoration">
-                ✦ ❧ ✦
-            </div>
-
+            <p>
+                Whether you're discovering a story for the first time
+                or revisiting a familiar favourite, there's always
+                something new to learn.
+            </p>
         </section>
 
 
-        <!-- ACTIVITIES -->
+        <!-- ACTIVITIES SECTION -->
+        <section class="activities-section">
+            <div class="container">
 
-        <section class="activities" id="activities">
-
-            <div class="section-heading">
-
-                <div class="eyebrow">Your adventure starts here</div>
-
-                <h2>Explore the Camp</h2>
-
-                <p>
-                    Every corner of camp has something waiting
-                    to be discovered. Where would you like to begin?
-                </p>
-
-            </div>
-
-
-            <div class="activity-grid">
-
-                <!-- STORIES -->
-
-                <article class="activity-card">
-
-                    <div class="activity-image">
-                        📖
-                    </div>
-
-                    <div class="activity-body">
-
-                        <h3>The Story Library</h3>
-
-                        <p>
-                            Meet courageous heroes, discover
-                            incredible miracles and explore
-                            the stories of the Bible.
-                        </p>
-
-                        <a href="stories.html" class="activity-link">
-                            Browse Stories →
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- QUIZZES -->
-
-                <article class="activity-card">
-
-                    <div class="activity-image">
-                        🧩
-                    </div>
-
-                    <div class="activity-body">
-
-                        <h3>The Quiz Corner</h3>
-
-                        <p>
-                            Put your Bible knowledge to the test.
-                            Answer questions, learn new things
-                            and challenge yourself.
-                        </p>
-
-                        <span class="activity-link">
-                            Coming Soon ✦
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-                <!-- CHALLENGES -->
-
-                <article class="activity-card">
-
-                    <div class="activity-image">
-                        🏕️
-                    </div>
-
-                    <div class="activity-body">
-
-                        <h3>Daily Adventures</h3>
-
-                        <p>
-                            Take on little daily challenges
-                            designed to encourage reflection,
-                            learning and kindness.
-                        </p>
-
-                        <span class="activity-link">
-                            Coming Soon ✦
-                        </span>
-
-                    </div>
-
-                </article>
-
-
-                <!-- ACHIEVEMENTS -->
-
-                <article class="activity-card">
-
-                    <div class="activity-image">
-                        🏆
-                    </div>
-
-                    <div class="activity-body">
-
-                        <h3>Your Achievements</h3>
-
-                        <p>
-                            Celebrate your progress, collect
-                            achievements and see how far
-                            your adventure has taken you.
-                        </p>
-
-                        <span class="activity-link">
-                            Coming Soon ✦
-                        </span>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- FEATURE -->
-
-        <section class="feature">
-
-            <div class="feature-inner">
-
-                <div class="feature-illustration">
-                    <div class="feature-symbol">🌲</div>
+                <div class="section-heading">
+                    <p class="section-subtitle">EXPLORE THE CAMP</p>
+                    <h2>What Would You Like to Do?</h2>
+                    <p>Choose your next adventure!</p>
                 </div>
 
-                <div class="feature-copy">
+                <div class="stories-grid">
 
-                    <div class="eyebrow">A story awaits</div>
+                    <a href="stories.html" class="story-card">
+                        <div class="card-top">
+                            <div class="story-icon">📖</div>
+                        </div>
 
-                    <h2>Step Into the World of the Bible.</h2>
+                        <div class="card-body">
+                            <h3>Bible Story Library</h3>
+                            <p>
+                                Discover 50 amazing stories from
+                                the Old and New Testaments.
+                            </p>
+                            <span>Explore Stories →</span>
+                        </div>
+                    </a>
 
-                    <p>
-                        From the creation of the world to the
-                        journeys of the disciples, the Bible is
-                        filled with stories of hope, courage,
-                        kindness, faith and love.
 
-                        Open the Story Library and begin exploring.
-                    </p>
+                    <a href="quizzes.html" class="story-card">
+                        <div class="card-top">
+                            <div class="story-icon">🧠</div>
+                        </div>
 
-                    <a href="stories.html" class="button-primary">
-                        Visit the Story Library →
+                        <div class="card-body">
+                            <h3>Quiz Corner</h3>
+                            <p>
+                                Test your Bible knowledge with
+                                exciting questions and challenges.
+                            </p>
+                            <span>Take a Quiz →</span>
+                        </div>
+                    </a>
+
+
+                    <a href="stories.html" class="story-card">
+                        <div class="card-top">
+                            <div class="story-icon">🌟</div>
+                        </div>
+
+                        <div class="card-body">
+                            <h3>Daily Adventures</h3>
+                            <p>
+                                Find a new story, lesson or discovery
+                                whenever you visit the camp.
+                            </p>
+                            <span>Start Exploring →</span>
+                        </div>
+                    </a>
+
+
+                    <a href="quizzes.html" class="story-card">
+                        <div class="card-top">
+                            <div class="story-icon">🏆</div>
+                        </div>
+
+                        <div class="card-body">
+                            <h3>Knowledge Challenges</h3>
+                            <p>
+                                Challenge yourself, answer questions
+                                and see how much you've learned.
+                            </p>
+                            <span>Challenge Yourself →</span>
+                        </div>
                     </a>
 
                 </div>
-
             </div>
-
         </section>
 
 
-        <!-- REFLECTION -->
+        <!-- FEATURE SECTION -->
+        <section class="container feature-section">
 
-        <section class="reflection">
+            <div class="feature-content">
+                <p class="section-subtitle">A STORY TO BEGIN WITH</p>
 
-            <div class="reflection-inner">
-
-                <div class="reflection-icon">🌼</div>
-
-                <div class="eyebrow">A little reminder</div>
-
-                <h2>Grow a Little Every Day.</h2>
+                <h2>Every Great Adventure Has a Beginning</h2>
 
                 <p>
-                    "Let all that you do be done in love."
+                    Before there were oceans, mountains, forests
+                    or people, there was God. Discover the very
+                    beginning of the Bible in the story of Creation.
                 </p>
 
-                <small>1 Corinthians 16:14 (ESV)</small>
+                <a href="stories/creation.html" class="btn btn-primary">
+                    Read the Creation Story →
+                </a>
+            </div>
 
+            <div class="feature-illustration">
+                <span>🌍</span>
+                <span>🌿</span>
+                <span>☀️</span>
             </div>
 
         </section>
 
 
         <!-- FINAL CALL TO ACTION -->
+        <section class="camp-cta">
+            <div class="container">
+                <p class="section-subtitle">READY FOR AN ADVENTURE?</p>
 
-        <section class="final-cta">
+                <h2>Your Bible Camp Journey Awaits!</h2>
 
-            <h2>Ready for Your Adventure?</h2>
+                <p>
+                    Read a story, learn something new and have fun
+                    along the way.
+                </p>
 
-            <p>
-                Your next discovery is just one click away.
-                Come explore the Story Library!
-            </p>
-
-            <a href="stories.html" class="button-primary">
-                Let's Explore →
-            </a>
-
+                <a href="stories.html" class="btn btn-primary">
+                    Enter the Story Library
+                </a>
+            </div>
         </section>
 
     </main>
 
 
     <!-- FOOTER -->
+    <footer class="site-footer">
+        <p>🌿 Enchanted Bible Camp</p>
 
-    <footer class="footer">
-
-        <div class="footer-main">
-
-            <div class="footer-brand">
-
-                <h3>🌿 Enchanted Bible Camp</h3>
-
-                <p>
-                    A little place to explore, learn, discover
-                    and grow in faith. Every story has a lesson,
-                    and every adventure has a beginning.
-                </p>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <h4>Explore</h4>
-
-                <a href="index.html">Home</a>
-                <a href="stories.html">Bible Stories</a>
-                <a href="#activities">Camp Activities</a>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <h4>Coming to Camp</h4>
-
-                <a href="stories.html">Start Reading</a>
-                <a href="#about">About the Camp</a>
-
-            </div>
-
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="stories.html">Stories</a>
+            <a href="quizzes.html">Quizzes</a>
         </div>
 
-
-        <div class="copyright">
-
-            <p>
-                © 2026 Odelia Development Enterprises.
-                All rights reserved.
-            </p>
-
-            <p>
-                Made with love, faith and a little campfire magic. ✦
-            </p>
-
-        </div>
-
+        <p>© 2026 Odelia Development Enterprises. All rights reserved.</p>
     </footer>
-
-
-    <!-- MOBILE NAVIGATION -->
-
-    <script>
-
-        const menuToggle =
-            document.getElementById("menuToggle");
-
-        const navLinks =
-            document.getElementById("navLinks");
-
-        menuToggle.addEventListener("click", () => {
-
-            const isOpen =
-                navLinks.classList.toggle("open");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                isOpen
-            );
-
-            menuToggle.textContent =
-                isOpen ? "✕" : "☰";
-
-        });
-
-        // Close the mobile menu after selecting a link.
-
-        navLinks.querySelectorAll("a").forEach(link => {
-
-            link.addEventListener("click", () => {
-
-                navLinks.classList.remove("open");
-
-                menuToggle.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                menuToggle.textContent = "☰";
-
-            });
-
-        });
-
-    </script>
 
 </body>
 </html>
