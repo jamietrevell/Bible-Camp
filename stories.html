@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Bible stories at Enchanted Bible Camp.">
+    <title>Bible Stories | Enchanted Bible Camp</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .stories-page {
+            max-width: 1150px;
+            margin: auto;
+            padding: 45px 24px 70px;
+        }
+
+        .stories-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .stories-heading h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            color: #244B36;
+            margin-bottom: 12px;
+        }
+
+        .stories-heading p {
+            color: #493D32;
+            max-width: 620px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        .story-search {
+            display: block;
+            width: min(100%, 550px);
+            margin: 28px auto;
+            padding: 14px 18px;
+            border: 2px solid #A9C5A0;
+            border-radius: 30px;
+            font: inherit;
+            background: #fffdf6;
+            color: #493D32;
+        }
+
+        .story-search:focus {
+            outline: 3px solid #E9B94F;
+            outline-offset: 3px;
+        }
+
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0 35px;
+        }
+
+        .category-button {
+            border: 2px solid #66845A;
+            border-radius: 25px;
+            padding: 9px 17px;
+            background: transparent;
+            color: #244B36;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .category-button:hover,
+        .category-button.active {
+            background: #244B36;
+            color: white;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+            gap: 22px;
+        }
+
+        .story-card {
+            background: #fffdf6;
+            border: 1px solid #e5d9b9;
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 5px 15px rgba(36, 75, 54, 0.07);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .story-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .story-category {
+            color: #66845A;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .story-card h2 {
+            color: #244B36;
+            font-family: 'Playfair Display', serif;
+            margin: 9px 0;
+            font-size: 1.4rem;
+        }
+
+        .story-card p {
+            color: #493D32;
+            line-height: 1.65;
+            flex-grow: 1;
+        }
+
+        .story-reference {
+            color: #66845A;
+            font-weight: 800;
+            margin: 12px 0;
+        }
+
+        .read-story {
+            background: #244B36;
+            color: white;
+            padding: 11px 18px;
+            border: none;
+            border-radius: 25px;
+            font: inherit;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .read-story:hover {
+            background: #66845A;
+        }
+
+        .story-content {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e5d9b9;
+            line-height: 1.8;
+            color: #493D32;
+        }
+
+        .story-card.expanded .story-content {
+            display: block;
+        }
+
+        .no-stories {
+            display: none;
+            text-align: center;
+            padding: 35px;
+            color: #493D32;
+        }
+
+        @media (max-width: 600px) {
+            .stories-page {
+                padding: 30px 16px 50px;
+            }
+
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="brand">
+        <a href="index.html">🌿 Enchanted Bible Camp</a>
+    </div>
+
+    <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="stories.html" aria-current="page">Stories</a>
+        <a class="nav-link" href="quiz.html">Quizzes</a>
+        <a class="nav-link" href="challenge.html">Daily Challenge</a>
+        <a class="nav-link" href="achievements.html">Achievements</a>
+        <a class="nav-link" href="songs.html">Songs</a>
+    </nav>
+</header>
+
+<main class="stories-page">
+
+    <section class="stories-heading">
+        <h1>📖 The Story Library</h1>
+        <p>
+            Gather around the campfire! Discover inspiring stories
+            of courage, faith, friendship, forgiveness and God's love.
+            Every story has something wonderful to teach us.
+        </p>
+    </section>
+
+    <input
+        type="search"
+        id="storySearch"
+        class="story-search"
+        placeholder="🔍 Search for a Bible story..."
+        aria-label="Search Bible stories"
+    >
+
+    <div class="category-filters" aria-label="Filter stories">
+        <button class="category-button active" data-category="all">All Stories</button>
+        <button class="category-button" data-category="old">Old Testament</button>
+        <button class="category-button" data-category="new">New Testament</button>
+        <button class="category-button" data-category="faith">Faith</button>
+        <button class="category-button" data-category="courage">Courage</button>
+    </div>
+
+    <section class="stories-grid" id="storiesGrid">
+
+        <article class="story-card" data-category="old courage">
+            <div class="story-icon">🌍</div>
+            <span class="story-category">Old Testament · Creation</span>
+            <h2>The Creation Story</h2>
+            <p>Discover how God created the heavens, the earth and everything in them.</p>
+            <div class="story-reference">Genesis 1–2</div>
+            <button class="read-story" aria-expanded="false">Read Story ↓</button>
+            <div class="story-content">
+                <p>In the beginning, there was nothing but darkness. Then God began to create. He made light and separated it from darkness. He made the sky, the land and the seas. He filled the earth with plants, trees and living creatures.</p>
+                <p>God created the sun, moon and stars. He made birds to fly through the sky and fish to swim through the waters. He created animals to live on the land.</p>
+                <p>Finally, God created human beings in His image. He saw everything He had made, and it was very good. On the seventh day, God rested.</p>
+                <p><strong>Remember:</strong> Creation reminds us that the world is precious and that everything has a beginning in God.</p>
+            </div>
+        </article>
+
+        <article class="story-card" data-category="old faith courage">
+            <div class="story-icon">🛶</div>
+            <span class="story-category">Old Testament · Faith</span>
+            <h2>Noah and the Ark</h2>
+            <p>A man, a giant boat, two of every kind of animal and an incredible storm.</p>
+            <div class="story-reference">Genesis 6–9</div>
+            <button class="read-story" aria-expanded="false">Read Story ↓</button>
+            <div class="story-content">
+                <p>God saw that the world had become full of wickedness. But Noah was a righteous man who walked with God.</p>
+                <p>God instructed Noah to build a great ark. Noah followed God's instructions, even though the task was enormous. He brought his family and the animals into the ark.</p>
+                <p>Then the rain began. It continued for forty days and forty nights, and the waters covered the earth. But Noah, his family and the animals were safe inside.</p>
+                <p>When the waters finally went down, God placed a rainbow in the sky as a sign of His covenant with the earth.</p>
+                <p><strong>Remember:</strong> Noah's story teaches us about obedience, faith and God's promises.</p>
+            </div>
+        </article>
+
+        <article class="story-card" data-category="old courage faith">
+            <div class="story-icon">🪨</div>
+            <span class="story-category">Old Testament · Courage</span>
+            <h2>David and Goliath</h2>
+            <p>How a young shepherd faced a mighty warrior with nothing but a sling and faith.</p>
+            <div class="story-reference">1 Samuel 17</div>
+            <button class="read-story" aria-expanded="false">Read Story ↓</button>
+            <div class="story-content">
+                <p>The Israelites were facing the Philistines. Their greatest warrior was Goliath, a giant who challenged anyone to fight him.</p>
+                <p>Everyone was afraid. But David, a young shepherd who had come to visit his brothers, believed that God would help him.</p>
+                <p>David refused the king's armour. Instead, he took his sling and five smooth stones. He approached Goliath and declared that he came in the name of the Lord.</p>
+                <p>David launched a stone with his sling. It struck Goliath, who fell to the ground. The Israelites won the battle.</p>
+                <p><strong>Remember:</strong> Courage isn't about being the biggest or strongest. It is about trusting God even when something seems impossible.</p>
+            </div>
+        </article>
+
+        <article class="story-card" data-category="old faith">
+            <div class="story-icon">🦁</div>
+            <span class="story-category">Old Testament · Faith</span>
+            <h2>Daniel in the Lions' Den</h2>
+            <p>Daniel refused to abandon his faith, even when doing so put his life at risk.</p>
+            <div class="story-reference">Daniel 6</div>
+            <button class="read-story" aria-expanded="false">Read Story ↓</button>
+            <div class="story-content">
+                <p>Daniel was a respected official in the kingdom of Babylon. Some jealous officials wanted to find a reason to punish him.</p>
+                <p>They convinced the king to make a law forbidding anyone from praying to a god or person other than the king for thirty days.</p>
+                <p>Daniel continued praying to God three times a day, just as he had always done. He was arrested and thrown into a den of lions.</p>
+                <p>But God sent an angel to shut the lions' mouths. Daniel was found unharmed the next morning.</p>
+                <p><strong>Remember:</strong> Daniel teaches us to remain faithful even when it is difficult.</p>
+            </div>
+        </article>
+
+        <article class="story-card" data-category="new faith courage">
+            <div class="story-icon">🌊</div>
+            <span class="story-category">New Testament · Faith</span>
+            <h2>Jesus Walks on Water</h2>
+            <p>A storm, a frightened group of disciples and an extraordinary moment of faith.</p>
+            <div class="story-reference">Matthew 14:22–33</div>
+            <button class="read-story" aria-expanded="false">Read Story ↓</button>
+            <div class="story-content">
+                <p>Jesus sent His disciples ahead of Him in a boat while He went up a mountain to pray.</p>
+                <p>During the night, a strong wind troubled the boat. Then the disciples saw Jesus walking towards them on the water. They were frightened, but Jesus told them not to be afraid.</p>
+                <p>Peter asked Jesus to let him come to Him on the water. Peter stepped out of the boat and began walking towards Jesus. But when he noticed the strong wind, he became afraid and started sinking.</p>
+                <p>Jesus immediately reached out and caught him.</p>
+                <p><strong>Remember:</strong> This story reminds us to trust Jesus even when life feels frightening.</p>
+            </div>
+        </article>
+
+        <article class="story-card" data-category="new faith">
+            <div class="story-icon">🌱</div>
+            <span class="story-category">New Testament · Love</span>
+            <h2>The Good Samaritan</h2>
+            <p>A story about kindness, compassion and helping someone who needs you.</p>
+            <div class="story-reference">Luke 10:25–37</div>
+            <button class="read-story" aria-expanded="false">Read Story ↓</button>
+            <div class="story-content">
+                <p>A man was travelling from Jerusalem to Jericho when robbers attacked him. They took his belongings, beat him and left him injured on the road.</p>
+                <p>A priest passed by without helping. A Levite also saw him but continued walking.</p>
+                <p>Then a Samaritan came along. He stopped, treated the man's wounds, placed him on his animal and took him to an inn. He even paid for his care.</p>
+                <p>Jesus told this story to teach that our neighbour is anyone who needs our kindness.</p>
+                <p><strong>Remember:</strong> Love is shown through our actions, not just our words.</p>
+            </div>
+        </article>
+
+        <article class="story-card" data-category="new faith">
+            <div class="story-icon">🐑</div>
+            <span class="story-category">New Testament · Forgiveness</span>
+            <h2>The Lost Sheep</h2>
+            <p>A shepherd leaves ninety-nine sheep to find the one that has wandered away.</p>
+            <div class="story-reference">Luke 15:1–7</div>
+            <button class="read-story" aria-expanded="false">Read Story ↓</button>
+            <div class="story-content">
+                <p>Jesus told a story about a shepherd who had one hundred sheep. When one went missing, he left the ninety-nine in the open country and went searching for the lost one.</p>
+                <p>When he found it, he joyfully carried it home on his shoulders.</p>
+                <p>He called his friends and neighbours together to celebrate because the lost sheep had been found.</p>
+                <p><strong>Remember:</strong> God's love reaches every person. No one is forgotten.</p>
+            </div>
+        </article>
+
+        <article class="story-card" data-category="new faith courage">
+            <div class="story-icon">✨</div>
+            <span class="story-category">New Testament · Hope</span>
+            <h2>The Resurrection of Jesus</h2>
+            <p>The story of the empty tomb and the discovery that Jesus had risen.</p>
+            <div class="story-reference">Matthew 28; Mark 16; Luke 24; John 20</div>
+            <button class="read-story" aria-expanded="false">Read Story ↓</button>
+            <div class="story-content">
+                <p>After Jesus was crucified and buried, His followers were heartbroken. On the third day, some women went to the tomb.</p>
+                <p>They discovered that the stone had been moved and that the tomb was empty. An angel told them that Jesus had risen, just as He had promised.</p>
+                <p>Jesus later appeared to His followers, bringing them hope and joy.</p>
+                <p><strong>Remember:</strong> For Christians, the resurrection is the foundation of their hope and faith.</p>
+            </div>
+        </article>
+
+    </section>
+
+    <p class="no-stories" id="noStories">
+        🌿 No stories found. Try another search!
+    </p>
+
+</main>
+
+<footer class="site-footer">
+    <p>© 2026 Odelia Development Enterprises. All rights reserved.</p>
+    <p>Made with love, faith and a little campfire magic. 🌿</p>
+</footer>
+
+<script>
+    const searchInput = document.getElementById("storySearch");
+    const cards = document.querySelectorAll(".story-card");
+    const categoryButtons = document.querySelectorAll(".category-button");
+    const noStories = document.getElementById("noStories");
+
+    let activeCategory = "all";
+
+    function filterStories() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            const categories = card.dataset.category.split(" ");
+
+            const matchesSearch = text.includes(searchTerm);
+            const matchesCategory =
+                activeCategory === "all" ||
+                categories.includes(activeCategory);
+
+            const visible = matchesSearch && matchesCategory;
+
+            card.style.display = visible ? "flex" : "none";
+
+            if (visible) visibleCount++;
+        });
+
+        noStories.style.display =
+            visibleCount === 0 ? "block" : "none";
+    }
+
+    searchInput.addEventListener("input", filterStories);
+
+    categoryButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            categoryButtons.forEach(btn => {
+                btn.classList.remove("active");
+            });
+
+            button.classList.add("active");
+            activeCategory = button.dataset.category;
+
+            filterStories();
+        });
+    });
+
+    document.querySelectorAll(".read-story").forEach(button => {
+        button.addEventListener("click", () => {
+            const card = button.closest(".story-card");
+            const expanded = card.classList.toggle("expanded");
+
+            button.textContent = expanded
+                ? "Close Story ↑"
+                : "Read Story ↓";
+
+            button.setAttribute("aria-expanded", expanded);
+        });
+    });
+</script>
+
+</body>
+</html>
